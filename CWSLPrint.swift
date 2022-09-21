@@ -26,7 +26,7 @@ class CWSLPrint {
     var message: String? = nil
     switch obj {
     case let objStr as String:
-      message = string(count: 80, string: objStr)
+      message = string(count: 92, string: objStr)
     default:
       break
     }
@@ -35,7 +35,8 @@ class CWSLPrint {
     let funcName   = string(count: 50, string: fn)
     let lineNumber = String(format: "%6d", ln)
     // TODO: 各列の幅を指定できるようにする
-    Swift.print("| \(fileName) | \(lineNumber) | \(funcName) | \(message != nil ? message! : obj) |")
+    Swift.print("| \(fileName) | \(lineNumber) | \(funcName) |\n| \(message != nil ? message! : obj) |")
+    Swift.print("+-")
   }
 
   static private func string(count: Int, string: String) -> String {
