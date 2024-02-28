@@ -17,6 +17,15 @@ class CWSLDatabaseHandler {
     }
   }
 
+  func synchronize(path: String,
+                   with: @escaping ((DataSnapshot) -> Void),
+                   withCancel: ((Error) -> Void)? = nil) {
+    let db = Database.database().reference()
+    db.child(path).observeSingleEvent(of: .value,
+                                      with: with,
+                                      withCancel: withCancel)
+  }
+
   func attach(path: String,
               event: DataEventType,
               with: @escaping ((DataSnapshot) -> Void),
