@@ -12,9 +12,7 @@ class CWSLDatabaseHandler {
   private var handles = [DatabaseHandle]()
 
   deinit {
-    for handle in self.handles {
-      Database.database().reference().removeObserver(withHandle: handle)
-    }
+    self.detachAllHandles()
   }
 
   func synchronize(path: String,
@@ -35,6 +33,12 @@ class CWSLDatabaseHandler {
                                          with: with,
                                          withCancel: withCancel)
     self.handles.append(handle)
+  }
+
+  func detachAllHandles() {
+    for handle in self.handles {
+      Database.database().reference().removeObserver(withHandle: handle)
+    }
   }
 
 }
