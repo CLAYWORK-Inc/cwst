@@ -26,4 +26,18 @@ class CWSLViewController: UIViewController {
     }))
     present(alert, animated: true, completion: nil)
   }
+
+  func presentAlert(title: String, message: String, firstButtonTitle: String, secondButtonTitle: String, firstButtonAction: (() -> Void)? = nil, secondButtonAction: (() -> Void)? = nil) {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+      alert.addAction(UIAlertAction(title: firstButtonTitle, style: .default, handler: { _ in
+          firstButtonAction?()
+      }))
+
+      alert.addAction(UIAlertAction(title: secondButtonTitle, style: .default, handler: { _ in
+          secondButtonAction?()
+      }))
+
+      present(alert, animated: true, completion: nil)
+  }
 }
