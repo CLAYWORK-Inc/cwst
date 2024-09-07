@@ -24,20 +24,23 @@ class CWSLViewController: UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
       completion?()
     }))
-    present(alert, animated: true, completion: nil)
+    DispatchQueue.main.async {
+      self.present(alert, animated: true, completion: nil)
+    }
   }
 
   func presentAlert(title: String, message: String, firstButtonTitle: String, secondButtonTitle: String, firstButtonAction: (() -> Void)? = nil, secondButtonAction: (() -> Void)? = nil) {
-      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-      alert.addAction(UIAlertAction(title: firstButtonTitle, style: .default, handler: { _ in
-          firstButtonAction?()
-      }))
+    alert.addAction(UIAlertAction(title: firstButtonTitle, style: .default, handler: { _ in
+      firstButtonAction?()
+    }))
 
-      alert.addAction(UIAlertAction(title: secondButtonTitle, style: .default, handler: { _ in
-          secondButtonAction?()
-      }))
-
-      present(alert, animated: true, completion: nil)
+    alert.addAction(UIAlertAction(title: secondButtonTitle, style: .default, handler: { _ in
+      secondButtonAction?()
+    }))
+    DispatchQueue.main.async {
+      self.present(alert, animated: true, completion: nil)
+    }
   }
 }
