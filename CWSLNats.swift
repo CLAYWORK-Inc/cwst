@@ -15,7 +15,7 @@ class CWSLNats {
       //The first step is establishing a connection to a NATS server. This example demonstrates how to connect to a NATS server using the default settings, which assume the server is running locally on the default port (4222). You can also customize your connection by specifying additional options:
 
       let nats = NatsClientOptions()
-        .url(URL(string: "nats://192.168.128.129:4222")!)
+        .url(URL(string: "nats://192.168.128.162:4222")!)
         // 間違いのアドレスを入れてテスト（結果：Natsライブラリがエラー終了）
         //.url(URL(string: "nats://192.168.128.128:4222")!)
         .build()
@@ -35,14 +35,16 @@ class CWSLNats {
       //let message = "{\"text\": \"こんにちは\", \"target_robot\": [\"UE04PA-A07420003\"]}"
       // t: タイムスタンプ
       // id: UUID生成が望ましい
-      
+
+      // "flow_id" : "FLSrKTpwRZ-OG3sl",
+
       let message = """
         {
           "id" : "requestId",
           "t" : 1602546613,
           "m": "flow",
           "c" : "flow_start",
-          "flow_id" : "FLSrKTpwRZ-OG3sl",
+          "flow_id" : "FLnzr6Ju-KUyCtWL",
           "index" : 0
         }
       """
