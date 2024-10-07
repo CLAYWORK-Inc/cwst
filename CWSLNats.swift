@@ -14,11 +14,19 @@ class CWSLNats {
       // # Connecting to a NATS Server
       //The first step is establishing a connection to a NATS server. This example demonstrates how to connect to a NATS server using the default settings, which assume the server is running locally on the default port (4222). You can also customize your connection by specifying additional options:
 
+      guard var ugoUrlString = OSFCModel.config().item(link: .ugoAddress)?.stringValue else {
+        return
+      }
+      print("ugoUrl: \(ugoUrlString)")
+
       let nats = NatsClientOptions()
-        .url(URL(string: "nats://192.168.128.143:4222")!)
+        .url(URL(string: ugoUrlString)!)
+        //.url(URL(string: "nats://192.168.128.143:4222")!)
         // 間違いのアドレスを入れてテスト（結果：Natsライブラリがエラー終了）
         //.url(URL(string: "nats://192.168.128.128:4222")!)
         .build()
+
+      print(nats)
 
       nats.on(.connected) { event in
         print("event: connected")
