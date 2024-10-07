@@ -15,7 +15,7 @@ class CWSLNats {
       //The first step is establishing a connection to a NATS server. This example demonstrates how to connect to a NATS server using the default settings, which assume the server is running locally on the default port (4222). You can also customize your connection by specifying additional options:
 
       let nats = NatsClientOptions()
-        .url(URL(string: "nats://192.168.128.162:4222")!)
+        .url(URL(string: "nats://192.168.128.143:4222")!)
         // 間違いのアドレスを入れてテスト（結果：Natsライブラリがエラー終了）
         //.url(URL(string: "nats://192.168.128.128:4222")!)
         .build()
